@@ -44,7 +44,6 @@ namespace _21.Pages
                 tb_date.Text = Document.date.ToString("dd.MM.yyyy");
                 tb_status.SelectedIndex = Document.status;
                 tb_vector.Text = Document.vector;
-                BtnAdd.Content = "Изменить";
             }
         }
 
@@ -67,7 +66,7 @@ namespace _21.Pages
             }
         }
 
-        private void AddDocument(object sender, RoutedEventArgs e)
+        public void AddDocument(object sender, RoutedEventArgs e)
         {
             if (s_src.Length == 0)
             {
@@ -134,7 +133,7 @@ namespace _21.Pages
                 newDocument.date = newDate;
                 newDocument.status = tb_status.SelectedIndex;
                 newDocument.vector = tb_vector.Text;
-                newDocument.Save();
+                newDocument.Save(true);
                 MessageBox.Show("Документ изменен.");
             }
 

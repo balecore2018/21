@@ -22,7 +22,22 @@ namespace _21
     public partial class MainWindow : Window
     {
         public static MainWindow init;
-        public List<DocumentContext> AllDocuments = new DocumentContext().AllDocuments();
+        private List<DocumentContext> _allDocuments;
+        public List<DocumentContext> AllDocuments
+        {
+            get
+            {
+                if (_allDocuments == null)
+                {
+                    _allDocuments = new List<DocumentContext>();
+                }
+                return _allDocuments;
+            }
+            set
+            {
+                _allDocuments = value;
+            }
+        }
 
         public enum pages
         {
@@ -33,6 +48,9 @@ namespace _21
         {
             InitializeComponent();
             init = this;
+            _allDocuments = new DocumentContext().AllDocuments();
+            if (_allDocuments == null) _allDocuments = new List<DocumentContext>();
+
             OpenPages(pages.main);
         }
 

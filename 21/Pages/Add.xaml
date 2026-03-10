@@ -121,7 +121,7 @@ Margin="170,335,90,0"/>
 
         <Button
             Content="Сохранить"
-            Click="BtnAdd"
+            Click="AddDocument"
             VerticalAlignment="Top"
             HorizontalAlignment="Right"
             Width="75"

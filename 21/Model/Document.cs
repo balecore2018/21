@@ -1,4 +1,5 @@
-﻿using System;
+﻿using _21.Classes;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,8 @@ namespace _21.Model
 {
     public class Document
     {
+        public static List<DocumentContext> allDocuments;
+
         public int id { get; set; }
         public string src { get; set; }
         public string name { get; set; }

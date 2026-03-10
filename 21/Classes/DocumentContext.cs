@@ -12,9 +12,9 @@ namespace _21.Classes
 {
     public class DocumentContext : Document, IDocument
     {
-        List<DocumentContext> IDocument.AllDocuments()
+        public List<DocumentContext> AllDocuments()
         {
-            List<Document> allDocuments = new List<Document>();
+            List<DocumentContext> allDocuments = new List<DocumentContext>();
             OleDbConnection connection = Common.DBConnection.Connection();
             OleDbDataReader dataDocuments = Common.DBConnection.Query("SELECT * FROM [Документы]", connection);
             while (dataDocuments.Read())
@@ -35,7 +35,7 @@ namespace _21.Classes
             }
             Common.DBConnection.CloseConnection(connection);
 
-            return allDocuments;
+            return allDocuments ?? new List<DocumentContext>();
         }
 
         public void Delete()
@@ -59,7 +59,7 @@ namespace _21.Classes
                     $"[Код документа] = '{this.id_document}', " +
                     $"[Дата поступления] = '{this.date.ToString("dd.MM.yyyy")}', " +
                     $"[Статус] = '{this.status}', " +
-                    $"[Направление] = '{this.vector}', " +
+                    $"[Направление] = '{this.vector}' " +
 
                 $"WHERE [Код] = {this.id}", connection);
                 Common.DBConnection.CloseConnection(connection);
@@ -67,8 +67,8 @@ namespace _21.Classes
             else
             {
                 OleDbConnection connection = Common.DBConnection.Connection();
-                Common.DBConnection.Query("INSERT INTO" +
-                    "[Документы]" +
+                Common.DBConnection.Query("INSERT INTO " + 
+    "[Документы] " + 
                     "([Изображение], " +
                     "[Наименование], " +
                     "[Ответственный], " +
@@ -90,6 +90,9 @@ namespace _21.Classes
 
         }
 
-        
+        List<DocumentContext> IDocument.AllDocuments()
+        {
+            return AllDocuments();
+        }
     }
 }

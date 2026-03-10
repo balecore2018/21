@@ -30,18 +30,18 @@ namespace _21.Elements
             lName.Content = Document.name;
             lUser.Content = $"Ответственный: {Document.user}";
             lCode.Content = $"Код документа: {Document.id_document}";
-            lUser.Content = $"Дата поступления: {Document.date.ToString("dd.MM.yyyy")}";
+            lDate.Content = $"Дата поступления: {Document.date.ToString("dd.MM.yyyy")}";
             lStatus.Content = Document.status == 0 ? $"Статус: входящий" : $"Статус: исходящий";
             lDirect.Content = "Направление: " + Document.vector;
             this.Document = Document;
         }
 
-        private void EditDocument(object sender, RoutedEventArgs e)
+        public void EditDocument(object sender, RoutedEventArgs e)
         {
             MainWindow.init.frame.Navigate(new Pages.Add(Document));
         }
 
-        private void DeleteDocument(object sender, RoutedEventArgs e)
+        public void DeleteDocument(object sender, RoutedEventArgs e)
         {
             Document.Delete();
             MainWindow.init.AllDocuments = new DocumentContext().AllDocuments();

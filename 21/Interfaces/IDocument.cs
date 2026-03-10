@@ -10,7 +10,7 @@ namespace _21.Interfaces
     {
 
         void Save (bool Update = false);
-        List<Model.Document> AllDocuments();
+        List<Classes.DocumentContext> AllDocuments();
         void Delete();
     }
 }

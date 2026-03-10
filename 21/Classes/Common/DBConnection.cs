@@ -17,14 +17,14 @@ namespace _21.Classes.Common
             return oleDbConnection;
         }
 
-        public static OleDbDataReader Query(string sql, OleDbConnection connection)
+        public static OleDbDataReader Query(string Query, OleDbConnection Connection)
         {
-            return new OleDbCommand(sql, connection).ExecuteReader();
+            return new OleDbCommand(Query, Connection).ExecuteReader();
         }
 
-        public static void CloseConnection(OleDbConnection connection)
+        public static void CloseConnection(OleDbConnection Connection)
         {
-            connection.Close();
+            Connection.Close();
         }
     }
 }

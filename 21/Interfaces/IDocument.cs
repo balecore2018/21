@@ -1,0 +1,16 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace _21.Interfaces
+{
+    public interface IDocument
+    {
+
+        void Save (bool Update = false);
+        List<Model.Document> AllDocuments();
+        void Delete();
+    }
+}
